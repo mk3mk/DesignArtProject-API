@@ -1,0 +1,17 @@
+asgiref
+contourpy
+cycler
+Django
+djangorestframework
+fonttools
+kiwisolver
+matplotlib
+numpy
+packaging
+Pillow
+pyparsing
+python-dateutil
+pytz
+six
+sqlparse
+django-cors-headers
