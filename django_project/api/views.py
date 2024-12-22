@@ -1,8 +1,8 @@
 from rest_framework import generics, permissions
 from . import serializers
 from django.contrib.auth.models import User
-from .models import Post, Comment, Category
-from .serializers import PostSerializer
+from .models import Post, Comment, Category, Feedback
+from .serializers import PostSerializer, FeedbackSerializer
 from .permissions import IsOwnerOrReadOnly
 
 
@@ -65,3 +65,13 @@ class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly
     ]
+
+
+class FeedbackList(generics.ListCreateAPIView):
+    queryset = Feedback.objects.all()
+    serializer_class = FeedbackSerializer
+
+
+class FeedbackDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Feedback.objects.all()
+    serializer_class = FeedbackSerializer

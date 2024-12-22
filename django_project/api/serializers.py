@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Post, Comment, Category
-
+from .models import Post, Comment, Category, Feedback
 
 class CategorySerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -33,6 +32,7 @@ class PostSerializer(serializers.ModelSerializer):
             'poster100x125',
             'poster200x250',
             'poster400x200',
+            'landos',
         ]
 
     def get_comments_count(self, obj):
@@ -61,3 +61,8 @@ class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = ['id', 'body', 'owner', 'post']
+
+class FeedbackSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Feedback
+        fields = ['id', 'name', 'email', 'message', 'created_at']
